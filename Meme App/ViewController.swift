@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
 //    Mark : Outlets
     @IBOutlet weak var imagePickerview: UIImageView!
@@ -16,15 +16,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomTextField: UITextField!
     
     
-//    Mark : Life Cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-    }
+    //    Properties
+        let memeTextAttributes : [NSAttributedString.Key : Any ] = [
+            NSAttributedString.Key.strokeColor : UIColor.black,
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-CondensedBlack", size: 25)!,
+            NSAttributedString.Key.strokeWidth : -5
+        ];
+        
+        
+        
+    //    Mark : Life Cycles
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            // Do any additional setup after loading the view.
+            
+            topTextField.delegate = self
+            bottomTextField.delegate = self
+            topTextField.defaultTextAttributes = memeTextAttributes
+            bottomTextField.defaultTextAttributes = memeTextAttributes
+            topTextField.textAlignment = .center
+            bottomTextField.textAlignment = .center
+           
+        }
+        
+        override func viewWillAppear(_ animated: Bool) {
+            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+            subscribeToKeyboardNotification()
+            
+        }
+        
+        override func viewWillDisappear(_ animated: Bool) {
+            unsubscibeToKeyboardNotification()
+        }
 
   
     @IBAction func pickAnImage(_ sender: Any) {

@@ -17,8 +17,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SZv-Wz-eCn">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="724"/>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uf-Om-3XB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="hXA-gu-jFq">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="tWg-e4-Pen"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="yGU-bL-mXK"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bJ-zt-k3T">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -35,14 +47,16 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-mP-Ox4">
-                                <rect key="frame" x="93" y="123" width="229" height="39.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-mP-Ox4">
+                                <rect key="frame" x="93" y="146" width="229" height="39.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PvC-R1-TIs">
-                                <rect key="frame" x="93" y="611" width="229" height="39.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PvC-R1-TIs">
+                                <rect key="frame" x="93" y="691" width="229" height="39.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -51,19 +65,22 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SZv-Wz-eCn" secondAttribute="trailing" id="0bI-ah-xV4"/>
-                            <constraint firstItem="Q3s-mP-Ox4" firstAttribute="leading" secondItem="SZv-Wz-eCn" secondAttribute="leading" id="55K-Ra-dN0"/>
-                            <constraint firstItem="PvC-R1-TIs" firstAttribute="bottom" secondItem="SZv-Wz-eCn" secondAttribute="bottom" id="92l-N0-NLO"/>
-                            <constraint firstItem="SZv-Wz-eCn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BCF-VC-1lb"/>
-                            <constraint firstItem="Q3s-mP-Ox4" firstAttribute="trailing" secondItem="SZv-Wz-eCn" secondAttribute="trailing" id="DLY-iY-tKY"/>
-                            <constraint firstItem="PvC-R1-TIs" firstAttribute="leading" secondItem="SZv-Wz-eCn" secondAttribute="leading" id="E80-x0-lrF"/>
-                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="top" secondItem="SZv-Wz-eCn" secondAttribute="bottom" id="Eey-39-xb5"/>
-                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="W7d-7s-bZM"/>
-                            <constraint firstItem="PvC-R1-TIs" firstAttribute="trailing" secondItem="SZv-Wz-eCn" secondAttribute="trailing" id="Yye-pp-S5Z"/>
-                            <constraint firstItem="Q3s-mP-Ox4" firstAttribute="top" secondItem="SZv-Wz-eCn" secondAttribute="top" id="fgL-ZJ-Zrs"/>
-                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="huJ-wQ-ecC"/>
-                            <constraint firstItem="SZv-Wz-eCn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kGM-nF-9T2"/>
-                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="w1r-68-om7"/>
+                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5LM-8B-Jja"/>
+                            <constraint firstItem="2uf-Om-3XB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ox-z3-5zo"/>
+                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B09-M9-v2q"/>
+                            <constraint firstItem="Q3s-mP-Ox4" firstAttribute="top" secondItem="SZv-Wz-eCn" secondAttribute="top" id="CTC-l5-smZ"/>
+                            <constraint firstItem="2uf-Om-3XB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="CpY-Hi-YA1"/>
+                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="top" secondItem="SZv-Wz-eCn" secondAttribute="bottom" id="Cxd-Zj-7ec"/>
+                            <constraint firstItem="Q3s-mP-Ox4" firstAttribute="trailing" secondItem="SZv-Wz-eCn" secondAttribute="trailing" id="Tok-3a-28f"/>
+                            <constraint firstItem="SZv-Wz-eCn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="b6v-h3-Nip"/>
+                            <constraint firstItem="PvC-R1-TIs" firstAttribute="bottom" secondItem="SZv-Wz-eCn" secondAttribute="bottom" id="ccN-qM-SZl"/>
+                            <constraint firstItem="4bJ-zt-k3T" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fy1-hn-Mc8"/>
+                            <constraint firstItem="SZv-Wz-eCn" firstAttribute="top" secondItem="2uf-Om-3XB" secondAttribute="bottom" constant="1" id="iqh-DN-kFv"/>
+                            <constraint firstItem="PvC-R1-TIs" firstAttribute="leading" secondItem="SZv-Wz-eCn" secondAttribute="leading" id="jFx-rh-o3V"/>
+                            <constraint firstItem="2uf-Om-3XB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="khD-qo-uND"/>
+                            <constraint firstItem="SZv-Wz-eCn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qu8-7m-bkd"/>
+                            <constraint firstItem="PvC-R1-TIs" firstAttribute="trailing" secondItem="SZv-Wz-eCn" secondAttribute="trailing" id="yZE-LH-PDA"/>
+                            <constraint firstItem="Q3s-mP-Ox4" firstAttribute="leading" secondItem="SZv-Wz-eCn" secondAttribute="leading" id="zGK-6m-3pe"/>
                         </constraints>
                     </view>
                     <connections>
@@ -75,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="-62"/>
+            <point key="canvasLocation" x="-194.20289855072465" y="-62.276785714285708"/>
         </scene>
     </scenes>
     <resources>
