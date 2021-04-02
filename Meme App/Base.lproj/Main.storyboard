@@ -21,13 +21,18 @@
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uf-Om-3XB">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="hXA-gu-jFq">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="tWg-e4-Pen"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="yGU-bL-mXK"/>
+                                    <navigationItem id="hXA-gu-jFq">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="tWg-e4-Pen">
+                                            <connections>
+                                                <action selector="share:" destination="BYZ-38-t0r" id="8E7-op-xxy"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="yGU-bL-mXK">
+                                            <connections>
+                                                <action selector="cancel:" destination="BYZ-38-t0r" id="bxv-hl-uXq"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -86,7 +91,11 @@
                     <connections>
                         <outlet property="bottomTextField" destination="PvC-R1-TIs" id="dGt-29-gyw"/>
                         <outlet property="cameraButton" destination="7eb-Mc-u0t" id="sqT-FZ-EGy"/>
+                        <outlet property="cancelButton" destination="yGU-bL-mXK" id="oa2-hE-QiL"/>
                         <outlet property="imagePickerview" destination="SZv-Wz-eCn" id="l4W-3j-Jbs"/>
+                        <outlet property="navigationBar" destination="2uf-Om-3XB" id="VEv-oC-ISo"/>
+                        <outlet property="shareButton" destination="tWg-e4-Pen" id="wD1-Du-aNZ"/>
+                        <outlet property="toolBar" destination="4bJ-zt-k3T" id="2wN-xM-Th1"/>
                         <outlet property="topTextField" destination="Q3s-mP-Ox4" id="RuF-qa-wLC"/>
                     </connections>
                 </viewController>
