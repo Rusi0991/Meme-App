@@ -19,38 +19,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
     
-    
-    //    Properties
-        let memeTextAttributes : [NSAttributedString.Key : Any ] = [
-            NSAttributedString.Key.strokeColor : UIColor.black,
-            NSAttributedString.Key.foregroundColor : UIColor.white,
-            NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-CondensedBlack", size: 25)!,
-            NSAttributedString.Key.strokeWidth : -5
-        ];
-        
         
         
     //    Mark : Life Cycles
         override func viewDidLoad() {
             super.viewDidLoad()
             // Do any additional setup after loading the view.
-            
-            topTextField.delegate = self
-            bottomTextField.delegate = self
-            topTextField.defaultTextAttributes = memeTextAttributes
-            bottomTextField.defaultTextAttributes = memeTextAttributes
-            topTextField.textAlignment = .center
-            bottomTextField.textAlignment = .center
-            
+            configure(topTextField, with: "TOP")
+            configure(bottomTextField, with: "BOTTOM")
+
         }
         
         override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
             cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
             subscribeToKeyboardNotification()
             
         }
         
         override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
             unsubscibeToKeyboardNotification()
         }
 
@@ -78,20 +66,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     
     @IBAction func pickAnImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
-        
+        imagePicker(source: .photoLibrary)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        
+        imagePicker(source: .camera)
+    }
+    
+    
+    func imagePicker(source : UIImagePickerController.SourceType){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = source
         present(imagePicker, animated: true, completion: nil)
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -135,8 +122,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.cgRectValue.height
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        topTextField.resignFirstResponder()
-        bottomTextField.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
     
@@ -148,9 +134,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
 
-        self.navigationBar.isHidden = true
-        self.toolBar.isHidden = true
-        
+//        self.navigationBar.isHidden = true
+//        self.toolBar.isHidden = true
+        hideBars()
 
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -158,11 +144,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
-        self.navigationBar.isHidden = false
-        self.toolBar.isHidden = false
-
+//        self.navigationBar.isHidden = false
+//        self.toolBar.isHidden = false
+        showBars()
         return memedImage
     }
+    
+    func hideBars(){
+        self.navigationBar.isHidden = true
+        self.toolBar.isHidden = true
+    }
+    func showBars(){
+        self.navigationBar.isHidden = false
+        self.toolBar.isHidden = false
+    }
+    
+    func configure(_ textField: UITextField, with defaultText: String) {
+        let memeTextAttributes : [NSAttributedString.Key : Any ] = [
+            NSAttributedString.Key.strokeColor : UIColor.black,
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-CondensedBlack", size: 25)!,
+            NSAttributedString.Key.strokeWidth : -3.2
+        ];
+        
+        
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.text = defaultText
+        textField.delegate = self
+       }
+    
     
 }
     
