@@ -127,7 +127,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func save(){
-        _ = MemeModel(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerview.image!, memedImage: generateMemedImage())
+        // Create the meme
+        let meme = MemeModel(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerview.image!, memedImage: generateMemedImage())
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
    
@@ -153,10 +159,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func hideBars(){
         self.navigationBar.isHidden = true
         self.toolBar.isHidden = true
+    
     }
     func showBars(){
         self.navigationBar.isHidden = false
         self.toolBar.isHidden = false
+        
     }
     
     func configure(_ textField: UITextField, with defaultText: String) {
