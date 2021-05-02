@@ -11,30 +11,27 @@ class SentMemeTableViewController: UITableViewController {
 
     
     //Mark : Properties
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-       var memes = [MemeModel]()
+    var memes: [MemeModel]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
     
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        toDoWhenInView()
+        
         }
     
     override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    toDoWhenInView()
-
+        tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
 }
 
-    override func viewDidAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    toDoWhenInView()
-
-}
+    
 
     
     // MARK: - Table view data source
@@ -65,27 +62,25 @@ class SentMemeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
 
-                let meme = self.memes[(indexPath as NSIndexPath).row]
-        detailController.detailImage.image = meme.memedImage
-    }
-    func toDoWhenInView() {
-    
-        
-            memes = appDelegate.memes
-            tableView.reloadData()
-            self.navigationController?.navigationBar.isHidden = false
-            self.tabBarController?.tabBar.isHidden = false
-    
-        }
+        let meme = self.memes[(indexPath as NSIndexPath).row]
 
-    //Goto edit
- 
-     @IBAction func addMoreButton(_ sender: Any) {
- 
-         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
- 
-         self.navigationController!.pushViewController(detailController, animated: true)
- 
-     }
+               detailController.detailImage.image = meme.memedImage
+
+        navigationController?.pushViewController(detailController, animated: true)
+    }
     
-}
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "DetailVC" {
+//            if let vc = segue.destination as? DetailViewController,
+//
+//               let indexPath = tableView.indexPathForSelectedRow?.first{
+//                let detailMeme = memes[indexPath]
+//                vc.detailImage.image = detailMeme.memedImage
+//            }
+//            }
+//        }
+    }
+
+    
+ 
+    

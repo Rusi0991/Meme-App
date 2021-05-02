@@ -14,12 +14,13 @@
             <objects>
                 <navigationController title="Collection" toolbarHidden="NO" id="32t-10-PEd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Collection" image="square.grid.3x3.fill" catalog="system" id="UHf-r6-9M6"/>
+                    <navigationItem key="navigationItem" id="ZY9-oq-bsc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5wM-G1-NZE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="K5s-oc-fZy" kind="relationship" relationship="rootViewController" id="4XG-NC-QdY"/>
+                        <segue destination="K5s-oc-fZy" kind="relationship" relationship="rootViewController" id="cB1-Y3-cgS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0u-EI-v0E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -57,6 +58,7 @@
                                 <size key="customSize" width="150" height="150"/>
                                 <connections>
                                     <outlet property="imageView" destination="u1G-AZ-dTg" id="aBh-6Q-fpX"/>
+                                    <segue destination="PJn-DP-7Ic" kind="show" id="7mI-dK-8SM"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -66,15 +68,14 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="a88-z0-hKq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iNv-3I-fqK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UdE-Iu-NeJ">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="SYD-Od-8Dk"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="uhL-hl-WvU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="Rkw-pB-uM6" id="Jhq-88-R9E"/>
-                        <segue destination="PJn-DP-7Ic" kind="show" id="Nim-L8-dvU"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lt-9O-arM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,6 +203,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="PJn-DP-7Ic" kind="show" id="Vkh-dP-sED"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -210,15 +214,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gfn-Wr-eeh">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6If-bg-AMT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SLq-lv-mx8">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="f7P-1w-5sN"/>
+                                <segue destination="PJn-DP-7Ic" kind="show" id="hsr-yP-rT2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="PJn-DP-7Ic" kind="show" identifier="toDetailVC" id="EDT-ra-5jx"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHf-cP-f8F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -233,7 +234,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XHc-1A-DEg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="676"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5q7-Os-dIt"/>
@@ -252,25 +253,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kno-ds-VkT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829" y="-49"/>
+            <point key="canvasLocation" x="1667" y="-62"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="n5w-F8-0An">
             <objects>
                 <tabBarController id="N2h-Ed-UNY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LQ9-I0-v6v"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bz2-Kt-QRg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="32t-10-PEd" kind="relationship" relationship="viewControllers" id="J2g-qL-LAJ"/>
-                        <segue destination="fMF-mu-kIM" kind="relationship" relationship="viewControllers" id="Sfv-Uo-usP"/>
+                        <segue destination="32t-10-PEd" kind="relationship" relationship="viewControllers" id="93E-rw-l2Q"/>
+                        <segue destination="fMF-mu-kIM" kind="relationship" relationship="viewControllers" id="pVj-ao-bHL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1B-FY-t67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1180" y="-449"/>
+            <point key="canvasLocation" x="-1041" y="-504"/>
         </scene>
         <!--Table-->
         <scene sceneID="ILl-zt-MHg">
@@ -278,13 +280,14 @@
                 <navigationController title="Table" automaticallyAdjustsScrollViewInsets="NO" id="fMF-mu-kIM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Table" image="list.dash" catalog="system" id="xIn-NE-VU2"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Rbl-Ol-LEU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ms0-66-YSg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="StW-Ky-0Wd" kind="relationship" relationship="rootViewController" id="ooD-fJ-SAi"/>
+                        <segue destination="StW-Ky-0Wd" kind="relationship" relationship="rootViewController" id="ZhH-ss-49I"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8m-gt-fFe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -293,8 +296,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nim-L8-dvU"/>
-        <segue reference="SYD-Od-8Dk"/>
+        <segue reference="hsr-yP-rT2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>

@@ -16,15 +16,20 @@ class SentMemeCollectionViewController: UICollectionViewController {
     //Mark : Properties
     
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-       var memes = [MemeModel]()
+    var memes: [MemeModel]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+    }
     
 //    Mark : Life Cycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        tabBarController?.tabBar.isHidden = false
+        
         let space:CGFloat = 3.0
             let dimension = (view.frame.size.width - (2 * space)) / 3.0
 
@@ -32,22 +37,17 @@ class SentMemeCollectionViewController: UICollectionViewController {
             flowLayout.minimumLineSpacing = space
             flowLayout.itemSize = CGSize(width: dimension, height: dimension)
 
-            toDoWhenInView()
+            
         
     }
            override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
    
-           toDoWhenInView()
+            collectionView.reloadData()
    
        }
    
-           override func viewDidAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-   
-           toDoWhenInView()
-   
-       }
+         
            
            override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
@@ -55,7 +55,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
             collectionView.reloadData()
     
-            toDoWhenInView()
+        
     
         }
     
@@ -90,6 +90,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
 
                 let meme = self.memes[(indexPath as NSIndexPath).row]
         detailController.detailImage.image = meme.memedImage
+
+        navigationController?.pushViewController(detailController, animated: true)
         
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "DetailVC" {
@@ -101,26 +103,15 @@ class SentMemeCollectionViewController: UICollectionViewController {
 //            }
 //            }
 //        }
-    }
-    func toDoWhenInView() {
+//    }
    
-    memes = appDelegate.memes
-    collectionView.reloadData()
-    self.navigationController?.navigationBar.isHidden = false
-    self.tabBarController?.tabBar.isHidden = false
-    
-        }
-    
-    @IBAction func addMoreButton(_ sender: Any) {
-
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-
-        self.navigationController!.pushViewController(detailController, animated: true)
-    
+    }
 }
+    
+
      
                     
-}
+
                     
                     
                 

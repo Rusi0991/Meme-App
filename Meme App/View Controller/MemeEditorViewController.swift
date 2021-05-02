@@ -142,6 +142,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 //        self.navigationBar.isHidden = true
 //        self.toolBar.isHidden = true
+        
         hideBars()
 
         // Render view to an image
@@ -159,7 +160,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func hideBars(){
         self.navigationBar.isHidden = true
         self.toolBar.isHidden = true
-    
+        
     }
     func showBars(){
         self.navigationBar.isHidden = false
