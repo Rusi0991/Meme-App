@@ -21,7 +21,7 @@ class SentMemeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tabBarController?.tabBar.isHidden = false
         }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,27 +60,34 @@ class SentMemeTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
 
-        let meme = self.memes[(indexPath as NSIndexPath).row]
+             let meme = self.memes[(indexPath as NSIndexPath).row]
 
-               detailController.detailImage.image = meme.memedImage
+        detailController.detailImage.image = meme.memedImage
 
-        navigationController?.pushViewController(detailController, animated: true)
+        navigationController!.pushViewController(detailController, animated: true)
     }
     
+    
+      }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "DetailVC", sender: indexPath)
+//    }
+//
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "DetailVC" {
 //            if let vc = segue.destination as? DetailViewController,
 //
-//               let indexPath = tableView.indexPathForSelectedRow?.first{
-//                let detailMeme = memes[indexPath]
-//                vc.detailImage.image = detailMeme.memedImage
+//               let indexPath = tableView.indexPathForSelectedRow{
+//                let detailMeme = memes[indexPath.row]
+//                vc.meme = detailMeme
 //            }
 //            }
 //        }
-    }
+//    }
 
     
  
     
+

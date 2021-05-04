@@ -10,7 +10,7 @@ import UIKit
 
 
 class SentMemeCollectionViewController: UICollectionViewController {
-
+    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     //Mark : Properties
@@ -43,21 +43,15 @@ class SentMemeCollectionViewController: UICollectionViewController {
            override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
    
-            collectionView.reloadData()
-   
+            collectionView!.reloadData()
+            tabBarController?.tabBar.isHidden = false
        }
    
          
            
-           override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    
-            super .viewWillTransition(to: size, with: coordinator)
-    
-            collectionView.reloadData()
+           
     
         
-    
-        }
     
     
 
@@ -92,7 +86,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
         detailController.detailImage.image = meme.memedImage
 
         navigationController?.pushViewController(detailController, animated: true)
-        
+}
+}
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "DetailVC" {
 //            if let vc = segue.destination as? DetailViewController,
@@ -105,8 +100,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
 //        }
 //    }
    
-    }
-}
+    
+
     
 
      

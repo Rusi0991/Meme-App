@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
 //    Mark : Outlets
@@ -27,13 +28,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // Do any additional setup after loading the view.
             configure(topTextField, with: "TOP")
             configure(bottomTextField, with: "BOTTOM")
-
+            tabBarController?.tabBar.isHidden = true
         }
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
             subscribeToKeyboardNotification()
+            
             
         }
         
@@ -61,6 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerview.image = nil
          topTextField.text = "TOP"
          bottomTextField.text = "BOTTOM"
+        navigationController?.popToRootViewController(animated: true)
     }
     
     
@@ -134,6 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        dismiss(animated: true, completion: nil)
     }
     
    
@@ -158,13 +162,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func hideBars(){
-        self.navigationBar.isHidden = true
-        self.toolBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
+        toolBar.isHidden = true
         
     }
     func showBars(){
-        self.navigationBar.isHidden = false
-        self.toolBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
+        toolBar.isHidden = false
         
     }
     
