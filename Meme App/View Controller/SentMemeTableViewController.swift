@@ -9,7 +9,7 @@ import UIKit
 
 class SentMemeTableViewController: UITableViewController {
 
-    
+    var meme : MemeModel!
     //Mark : Properties
     var memes: [MemeModel]! {
         let object = UIApplication.shared.delegate
@@ -53,7 +53,7 @@ class SentMemeTableViewController: UITableViewController {
         // Configure cell
         
         cell.imageView?.image = meme.memedImage
-        
+        cell.textLabel?.text = meme.topText + "..." + meme.bottomText
         return cell
     }
     
@@ -61,11 +61,8 @@ class SentMemeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-
-             let meme = self.memes[(indexPath as NSIndexPath).row]
-
-        detailController.detailImage.image = meme.memedImage
-
+        
+        detailController.meme = memes[indexPath.row]
         navigationController!.pushViewController(detailController, animated: true)
     }
     

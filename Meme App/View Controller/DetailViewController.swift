@@ -6,13 +6,18 @@
 //
 
 import UIKit
-
+var meme : MemeModel!
 class DetailViewController: UIViewController {
     @IBOutlet weak var detailImage: UIImageView!
-    var meme : MemeModel?
+    var meme : MemeModel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         updateView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if let meme = meme {
+            detailImage.image = meme.memedImage
+        }
     }
     
     func updateView(){

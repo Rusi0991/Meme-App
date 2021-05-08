@@ -10,7 +10,7 @@ import UIKit
 
 
 class SentMemeCollectionViewController: UICollectionViewController {
-    
+    var meme : MemeModel!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     //Mark : Properties
@@ -28,7 +28,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        tabBarController?.tabBar.isHidden = false
+//        tabBarController?.tabBar.isHidden = false
         
         let space:CGFloat = 3.0
             let dimension = (view.frame.size.width - (2 * space)) / 3.0
@@ -42,7 +42,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     }
            override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
-   
+            
             collectionView!.reloadData()
             tabBarController?.tabBar.isHidden = false
        }
@@ -69,10 +69,11 @@ class SentMemeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        let meme = self.memes[(indexPath as NSIndexPath).row]
+        let meme = self.memes[(indexPath as NSIndexPath).item]
         
          // Configure cell
         cell.imageView.image = meme.memedImage
+        
         
         return cell
     }
@@ -81,10 +82,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-
-                let meme = self.memes[(indexPath as NSIndexPath).row]
-        detailController.detailImage.image = meme.memedImage
-
+        detailController.meme = memes[indexPath.item]
+        
         navigationController?.pushViewController(detailController, animated: true)
 }
 }
